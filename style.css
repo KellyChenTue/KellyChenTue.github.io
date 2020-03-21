@@ -32,11 +32,12 @@ p {
 
 #parentdiv {
     position: relative;
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
     background-color: black;
     border-radius: 150px;
-    margin: 300px auto;
+    margin: 220px auto;
+    margin-right: 25px;
     text-align: center;
 }
 
