@@ -1,1 +1,3 @@
-# pin-zhen.chen.github.io
+
+# Click to start [Clock Test](https://kellychentue.github.io/test.html)
+
