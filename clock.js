@@ -49,8 +49,6 @@ document.body.onkeyup = function(e) {
 
         reactTime = (pressTime - jumpedTime) / 1000;
         document.getElementById("reactT").textContent = reactTime;
-
-
         if (!isNaN(reactTime)) {
             document.getElementById("correct").textContent = "Correct!";
             correctness = "Correct";
