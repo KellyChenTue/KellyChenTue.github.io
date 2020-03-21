@@ -105,67 +105,68 @@ function startTimer(duration, display) {
         minutes, seconds;
 
     var myTimer = setInterval(function() {
-            if (--timer <= 0) {
-                document.getElementById("testDone").textContent = "You have accomplished this test!";
-                document.getElementById("report").style.display = "block";
-                document.getElementById("download_csv").style.display = "block";
-                document.getElementById("send_csv").style.display = "block";
-                document.getElementById("dashboard").style.display = "none";
-                clearInterval(myTimer);
+        if (--timer <= 0) {
+            document.getElementById("testDone").textContent = "You have accomplished this test!";
+            document.getElementById("report").style.display = "block";
+            document.getElementById("download_csv").style.display = "block";
+            document.getElementById("send_csv").style.display = "block";
+            document.getElementById("dashboard").style.display = "none";
+            clearInterval(myTimer);
+        }
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+        display.textContent = minutes + ":" + seconds;
+        c = document.getElementById("parentdiv").childNodes;
+
+        // document.getElementById("childNodes").innerHTML = c.length;
+        count++;
+        // if 42 dots have been visited, regenerate a random number and continue
+        if (count >= 42) {
+            count = 0;
+            arr = [];
+            c[41].style.backgroundColor = "white";
+        }
+        if (count == 0) {
+            while (arr.length < 42 * 0.1 - 1) {
+                var random_num = Math.floor(Math.random() * 41) + 1;
+                if (arr.indexOf(random_num) === -1) arr.push(random_num);
             }
-            minutes = parseInt(timer / 60, 10);
-            seconds = parseInt(timer % 60, 10);
-            minutes = minutes < 10 ? "0" + minutes : minutes;
-            seconds = seconds < 10 ? "0" + seconds : seconds;
-            display.textContent = minutes + ":" + seconds;
-            c = document.getElementById("parentdiv").childNodes;
-            count++;
-            // if 42 dots have been visited, regenerate a random number and continue
-            if (count >= 42) {
-                count = 0;
-                arr = [];
-                c[41].style.backgroundColor = "white";
-            }
-            if (count == 0) {
-                while (arr.length < 42 * 0.1 - 1) {
-                    var random_num = Math.floor(Math.random() * 41) + 1;
-                    if (arr.indexOf(random_num) === -1) arr.push(random_num);
-                }
-                // document.getElementById("myArr").innerHTML = arr;
-                if (arr.includes(0) | arr.includes(41)) {
-                    c[count + 1].style.backgroundColor = "green";
-                    count++;
-                } else {
-                    c[count].style.backgroundColor = "green";
-                }
+            document.getElementById("myArr").innerHTML = arr;
+            if (arr.includes(0) | arr.includes(41)) {
+                c[count + 1].style.backgroundColor = "green";
+                count++;
             } else {
-                if (arr.includes(count)) {
-                    //if the participant doesn't react on a jump before the next jump
-                    // keep the record in log as "No Reaction"
-
-
-                    if (csvArr.length > 1 && csvArr[csvArr.length - 1][2] != dot_pos_x) {
-                        csvArr.push([id, Date(), dot_pos_x, dot_pos_y, "NaN", "No Reaction"]);
-                    }
-
-                    c[count - 1].style.backgroundColor = "white";
-                    if (count == 41) { c[0].style.backgroundColor = "green"; } else {
-                        c[count + 1].style.backgroundColor = "green";
-                    }
-
-                    jumpedTime = Date.now();
-                    dot_pos_x = c[count].getBoundingClientRect().x;
-                    dot_pos_y = c[count].getBoundingClientRect().y;
-
-                    document.getElementById("dotpos").textContent = dot_pos_x + " , " + dot_pos_y;
-                    // document.getElementById("jumpT").textContent = jumpedTime;
-                    count++;
-                } else {
-                    c[count - 1].style.backgroundColor = "white";
-                    c[count].style.backgroundColor = "green";
-
-                }
+                c[count].style.backgroundColor = "green";
             }
-        },
-        1000);
+        } else {
+            if (arr.includes(count)) {
+                //if the participant doesn't react on a jump before the next jump
+                // keep the record in log as "No Reaction"
+
+
+                if (csvArr.length > 1 && csvArr[csvArr.length - 1][2] != dot_pos_x) {
+                    csvArr.push([id, Date(), dot_pos_x, dot_pos_y, "NaN", "No Reaction"]);
+                }
+
+                c[count - 1].style.backgroundColor = "white";
+                if (count == 41) { c[0].style.backgroundColor = "green"; } else {
+                    c[count + 1].style.backgroundColor = "green";
+                }
+
+                jumpedTime = Date.now();
+                dot_pos_x = c[count].getBoundingClientRect().x;
+                dot_pos_y = c[count].getBoundingClientRect().y;
+
+                document.getElementById("dotpos").textContent = dot_pos_x + " , " + dot_pos_y;
+                // document.getElementById("jumpT").textContent = jumpedTime;
+                count++;
+            } else {
+                c[count - 1].style.backgroundColor = "white";
+                c[count].style.backgroundColor = "green";
+
+            }
+        }
+    }, 1000);
 }
