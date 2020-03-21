@@ -1,18 +1,11 @@
-// var subButton = document.getElementById('subButton');
-// var keyboardEvent = document.createEvent("KeyboardEvent");
-
-// subButton.addEventListener('click', getUserName, false);
-// subButton.window.location.assign("test.html");
 var id;
 
 function getUserName() {
-    var id = document.getElementById('nameField').value;
+    id = document.getElementById('nameField').value;
     document.getElementById("registration").style.display = "none";
     document.getElementById("test").style.display = "block";
     document.getElementById("participantID").innerHTML = id;
 
-    //TODO save the ID to log file.
-    //window.location.replace("test.html");
 }
 
 var date = new Date();
@@ -46,15 +39,18 @@ for (var i = 1; i <= 42; ++i) {
 // onkeyup event. Start and react when there is a jump.
 document.body.onkeyup = function(e) {
     if (e.keyCode == 83) { //s
-        var fifteenMinutes = 60 * 3,
+        var fifteenMinutes = 60 * 15,
             display = document.querySelector('#time');
         startTimer(fifteenMinutes, display);
         document.getElementById("dashboard").style.display = "block";
     }
     if (e.keyCode == 32) { //space bar
         pressTime = Date.now();
+
         reactTime = (pressTime - jumpedTime) / 1000;
         document.getElementById("reactT").textContent = reactTime;
+
+
         if (!isNaN(reactTime)) {
             document.getElementById("correct").textContent = "Correct!";
             correctness = "Correct";
@@ -93,7 +89,7 @@ function download_csv() {
     avgReaction = (tempSum / validCount).toFixed(2);
     correctRate = (correctCount / csvArr.length).toFixed(2);
 
-    finalArr = [' average reaction time: ', avgReaction, 'correct rate: ', correctRate];
+    finalArr = [' average reaction time (s): ', avgReaction, 'correct rate: ', correctRate];
     csv += finalArr.join(',');
 
     console.log(csv);
@@ -163,7 +159,7 @@ function startTimer(duration, display) {
                     dot_pos_x = c[count].getBoundingClientRect().x;
                     dot_pos_y = c[count].getBoundingClientRect().y;
 
-                    document.getElementById("dotpos").textContent = dot_pos_x;
+                    document.getElementById("dotpos").textContent = dot_pos_x + " , " + dot_pos_y;
                     // document.getElementById("jumpT").textContent = jumpedTime;
                     count++;
                 } else {
@@ -173,5 +169,5 @@ function startTimer(duration, display) {
                 }
             }
         },
-        100);
+        1000);
 }
