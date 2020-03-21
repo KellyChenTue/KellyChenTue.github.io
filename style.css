@@ -1,0 +1,117 @@
+body {
+    background-color: black;
+    color: white;
+    padding: 20px;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+    display: block;
+}
+
+p {
+    color: white;
+    font-family: verdana;
+    font-size: 20px;
+    display: block;
+}
+
+.form-uname {
+    font-size: 30px;
+    text-align: center;
+}
+
+#nameField {
+    height: 20px;
+    background-color: rgb(203, 233, 228);
+    padding: 10px;
+    margin: 10px;
+    font-size: 20px;
+}
+
+#parentdiv {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    background-color: black;
+    border-radius: 150px;
+    margin: 300px auto;
+    text-align: center;
+}
+
+#dashboard {
+    display: none;
+    padding: 100px;
+}
+
+#report {
+    display: none;
+    text-align: center;
+}
+
+#download_csv {
+    display: none;
+}
+
+#send_csv {
+    display: none;
+}
+
+#registration {
+    display: block;
+}
+
+#test {
+    display: none;
+}
+
+.column {
+    float: left;
+    width: 50%;
+    /* padding: 10px; */
+    height: 300px;
+    margin: 0px auto;
+    /* Should be removed. Only for demonstration */
+}
+
+
+/* Clear floats after the columns */
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+    margin: 0px auto;
+}
+
+button {
+    width: 150px;
+    height: 30px;
+    margin: 20px auto;
+    background-color: #4CAF50;
+    font-size: 16px;
+    display: block;
+    cursor: pointer;
+    border: none;
+}
+
+.div2 {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 100px;
+}
+
+.div3 {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: green;
+    border-radius: 100px;
+}
+
+p span {
+    font-family: "Courier New", monospace;
+}

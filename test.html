@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Clock Test</h1>
+    <div id="registration">
+        <p>The Experiment will last 15 minutes.</p>
+        <p>You will see 42 white dots on your screen and a green dot will visit one dot to the next in clockwise direction each second. When you see the green dot performs a jump and omits one position. You have to press the SPACE KEY.
+        </p>
+        <p>Now, please enter your ID and click submit button to start.</p>
+        <div class='form-uname'>
+            <label id='nameLabel' for='nameField'>Your ID:
+            <input id='nameField' type='text' maxlength='25'></input>
+        </label>
+            <div class='form-sub'>
+                <button id='subButton' type='button' onclick="getUserName()">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="test">
+
+        <p>Hi, <span id="participantID"></span>. Please press "S" key to start. </p>
+        <p>Press a SPACE KEY when you see the green dot performs a jump.</p>
+        <p>The test closes in <span id="time">03:00</span> minutes!</p>
+
+        <div class="row">
+            <div class="column">
+                <div id="parentdiv"></div>
+            </div>
+            <div class="column">
+                <div id="dashboard">
+                    <!-- <h1 id="jumpingArr">"The jumping arr: <span id="myArr"></span></h1> -->
+                    <!-- <h1>Jumped Time: <span id="jumpT"></span></h1> -->
+                    <h1>Dot pos: <span id="dotpos"></span></h1>
+                    <h1>React Time: <span id="reactT"></span> second</h1>
+                    <h1>Correctness: <span id="correct"></span></h1>
+
+
+                </div>
+                <div id="report">
+
+                    <h1><span id="testDone"></span></h1>
+                    <h2>You may download your report as CSV file <br> or/and send it directly to our institute.</h2>
+                    <button onclick="send_csv()" id="send_csv">Send CSV</button>
+                    <button onclick="download_csv()" id="download_csv">Download CSV</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
+
+<script src="clock.js"></script>
