@@ -1,12 +1,24 @@
 body {
     background-color: black;
     color: white;
-    padding: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    left: 20px;
+    /* Suppose you want minimum width of 1000px */
+    /* width: auto !important;
+    /* Firefox will set width as auto */
+    /* width: 1000px; */
 }
 
 h1 {
     color: white;
     text-align: center;
+    display: block;
+}
+
+h2 {
+    color: white;
+    text-align: left;
     display: block;
 }
 
@@ -30,13 +42,20 @@ p {
     font-size: 20px;
 }
 
-#parentdiv {
-    position: relative;
+#f-cross {
     width: 150px;
     height: 150px;
-    background-color: red;
+    margin: 250px auto;
+    front-size: 100px;
+}
+
+#parentdiv {
+    position: relative;
+    width: 0px;
+    height: 0px;
+    background-color: black;
     border-radius: 150px;
-    margin: 300px auto;
+    margin: 250px auto;
     /* margin-right: 25px; */
     text-align: center;
 }
@@ -69,11 +88,15 @@ p {
 
 .column {
     float: left;
+    left: 50px;
+    right: 50px;
     width: 50%;
     /* padding: 10px; */
-    height: 300px;
-    margin: 0px auto;
+    /* display: block; */
+    /* margin: 10px auto; */
     /* Should be removed. Only for demonstration */
+    /* text-align: left;*/
+    position: relative;
 }
 
 
@@ -83,7 +106,8 @@ p {
     content: "";
     display: table;
     clear: both;
-    margin: 0px auto;
+    /* margin: 0px auto;
+    width: 100%; */
 }
 
 button {
@@ -105,14 +129,55 @@ button {
     border-radius: 100px;
 }
 
-.div3 {
+
+/* .div_f {
     position: absolute;
-    width: 40px;
-    height: 40px;
-    background-color: green;
-    border-radius: 100px;
-}
+    width: 0px;
+    height: 0px;
+    font-size: 6rem;
+    
+    background-color: white;
+  
+} */
 
 p span {
     font-family: "Courier New", monospace;
 }
+
+.div_f {
+    background: white;
+    height: 100px;
+    position: relative;
+    width: 20px;
+    text-align: center;
+}
+
+.div_f:after {
+    background: white;
+    content: "";
+    height: 20px;
+    left: -40px;
+    position: absolute;
+    top: 40px;
+    width: 100px;
+}
+
+
+/* 
+.fixdiv {
+    background: red;
+    height: 100px;
+    position: relative;
+    width: 20px;
+    text-align: center;
+}
+
+.fixdiv:after {
+    background: red;
+    content: "";
+    height: 20px;
+    left: -40px;
+    position: absolute;
+    top: 40px;
+    width: 100px;
+} */

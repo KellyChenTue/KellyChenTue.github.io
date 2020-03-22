@@ -9,7 +9,7 @@ function getUserName() {
 }
 
 var date = new Date();
-var count = -1;
+var count = 0;
 var arr = [];
 var pressTime;
 var jumpedTime;
@@ -23,14 +23,19 @@ var parentdiv = document.getElementById('parentdiv');
 var offsetToParentCenter = parseInt(parentdiv.offsetWidth / 2); //assumes parent is square
 var offsetToChildCenter = 20;
 var totalOffset = offsetToParentCenter - offsetToChildCenter;
-
+var f_cross = document.createElement('div');
+f_cross.className = 'div_f';
+f_cross.style.position = 'absolute';
+f_cross.style.top = (totalOffset - 50) + "px";
+f_cross.style.left = (totalOffset) + "px";
+parentdiv.appendChild(f_cross);
 // create 42 white dots
 for (var i = 1; i <= 42; ++i) {
     var childdiv = document.createElement('div');
     childdiv.className = 'div2';
     childdiv.style.position = 'absolute';
-    var y = Math.sin((deg * i) * (Math.PI / 180)) * radius;
-    var x = Math.cos((deg * i) * (Math.PI / 180)) * radius;
+    var y = Math.sin((deg * i - 90) * (Math.PI / 180)) * radius;
+    var x = Math.cos((deg * i - 90) * (Math.PI / 180)) * radius;
     childdiv.style.top = (y + totalOffset).toString() + "px";
     childdiv.style.left = (x + totalOffset).toString() + "px";
     parentdiv.appendChild(childdiv);
@@ -39,7 +44,7 @@ for (var i = 1; i <= 42; ++i) {
 // onkeyup event. Start and react when there is a jump.
 document.body.onkeyup = function(e) {
     if (e.keyCode == 83) { //s
-        var fifteenMinutes = 60 * 15,
+        var fifteenMinutes = 60 * 3,
             display = document.querySelector('#time');
         startTimer(fifteenMinutes, display);
         document.getElementById("dashboard").style.display = "block";
@@ -97,7 +102,7 @@ function download_csv() {
     hiddenElement.download = 'report.csv';
     hiddenElement.click();
 }
-
+c = document.getElementById("parentdiv").childNodes;
 
 // timer start. A green dot will visit all the white dots, except for the 10% jumps.
 function startTimer(duration, display) {
@@ -105,6 +110,9 @@ function startTimer(duration, display) {
         minutes, seconds;
 
     var myTimer = setInterval(function() {
+        if (count == 0) { //ignore the first child
+            count++;
+        }
         if (--timer <= 0) {
             document.getElementById("testDone").textContent = "You have accomplished this test!";
             document.getElementById("report").style.display = "block";
@@ -118,23 +126,23 @@ function startTimer(duration, display) {
         minutes = minutes < 10 ? "0" + minutes : minutes;
         seconds = seconds < 10 ? "0" + seconds : seconds;
         display.textContent = minutes + ":" + seconds;
-        c = document.getElementById("parentdiv").childNodes;
+
 
         // document.getElementById("childNodes").innerHTML = c.length;
-        count++;
+
         // if 42 dots have been visited, regenerate a random number and continue
-        if (count >= 42) {
-            count = 0;
+        if (count >= 43) {
+            count = 1;
             arr = [];
-            c[41].style.backgroundColor = "white";
+            c[42].style.backgroundColor = "white";
         }
-        if (count == 0) {
+        if (count == 1) {
             while (arr.length < 42 * 0.1 - 1) {
-                var random_num = Math.floor(Math.random() * 41) + 1;
+                var random_num = Math.floor(Math.random() * 42) + 1;
                 if (arr.indexOf(random_num) === -1) arr.push(random_num);
             }
-            document.getElementById("myArr").innerHTML = arr;
-            if (arr.includes(0) | arr.includes(41)) {
+            // document.getElementById("myArr").innerHTML = arr;
+            if (arr.includes(1) | arr.includes(42)) {
                 c[count + 1].style.backgroundColor = "green";
                 count++;
             } else {
@@ -151,7 +159,7 @@ function startTimer(duration, display) {
                 }
 
                 c[count - 1].style.backgroundColor = "white";
-                if (count == 41) { c[0].style.backgroundColor = "green"; } else {
+                if (count == 42) { c[0].style.backgroundColor = "green"; } else {
                     c[count + 1].style.backgroundColor = "green";
                 }
 
@@ -168,5 +176,6 @@ function startTimer(duration, display) {
 
             }
         }
+        count++;
     }, 1000);
 }
