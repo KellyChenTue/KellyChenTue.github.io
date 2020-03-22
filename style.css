@@ -146,20 +146,20 @@ p span {
 
 .div_f {
     background: white;
-    height: 100px;
+    height: 20px;
     position: relative;
-    width: 20px;
+    width: 4px;
     text-align: center;
 }
 
 .div_f:after {
     background: white;
     content: "";
-    height: 20px;
-    left: -40px;
+    height: 4px;
+    left: -8px;
     position: absolute;
-    top: 40px;
-    width: 100px;
+    top: 8px;
+    width: 20px;
 }
 
 

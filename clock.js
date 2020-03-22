@@ -26,8 +26,8 @@ var totalOffset = offsetToParentCenter - offsetToChildCenter;
 var f_cross = document.createElement('div');
 f_cross.className = 'div_f';
 f_cross.style.position = 'absolute';
-f_cross.style.top = (totalOffset - 50) + "px";
-f_cross.style.left = (totalOffset) + "px";
+f_cross.style.top = (totalOffset - 5) + "px";
+f_cross.style.left = (totalOffset + 5) + "px";
 parentdiv.appendChild(f_cross);
 // create 42 white dots
 for (var i = 1; i <= 42; ++i) {
