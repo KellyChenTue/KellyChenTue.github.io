@@ -159,7 +159,7 @@ function startTimer(duration, display) {
                 }
 
                 c[count - 1].style.backgroundColor = "white";
-                if (count == 42) { c[0].style.backgroundColor = "green"; } else {
+                if (count == 42) { c[1].style.backgroundColor = "green"; } else {
                     c[count + 1].style.backgroundColor = "green";
                 }
 

@@ -22,6 +22,12 @@ h2 {
     display: block;
 }
 
+h3 {
+    color: white;
+    text-align: left;
+    display: block;
+}
+
 p {
     color: white;
     font-family: verdana;
