@@ -18,7 +18,6 @@ var correctness;
 var csvArr = [];
 var deg = 360 / 42;
 var radius = 200;
-
 var parentdiv = document.getElementById('parentdiv');
 var offsetToParentCenter = parseInt(parentdiv.offsetWidth / 2); //assumes parent is square
 var offsetToChildCenter = 20;
@@ -40,6 +39,8 @@ for (var i = 1; i <= 42; ++i) {
     childdiv.style.left = (x + totalOffset).toString() + "px";
     parentdiv.appendChild(childdiv);
 }
+// get childNOdes 
+c = document.getElementById("parentdiv").childNodes;
 
 // onkeyup event. Start and react when there is a jump.
 document.body.onkeyup = function(e) {
@@ -102,7 +103,8 @@ function download_csv() {
     hiddenElement.download = 'report.csv';
     hiddenElement.click();
 }
-c = document.getElementById("parentdiv").childNodes;
+
+
 
 // timer start. A green dot will visit all the white dots, except for the 10% jumps.
 function startTimer(duration, display) {
@@ -126,10 +128,7 @@ function startTimer(duration, display) {
         minutes = minutes < 10 ? "0" + minutes : minutes;
         seconds = seconds < 10 ? "0" + seconds : seconds;
         display.textContent = minutes + ":" + seconds;
-
-
         // document.getElementById("childNodes").innerHTML = c.length;
-
         // if 42 dots have been visited, regenerate a random number and continue
         if (count >= 43) {
             count = 1;
@@ -138,11 +137,11 @@ function startTimer(duration, display) {
         }
         if (count == 1) {
             while (arr.length < 42 * 0.1 - 1) {
-                var random_num = Math.floor(Math.random() * 42) + 1;
+                var random_num = Math.floor(Math.random() * 41) + 1;
                 if (arr.indexOf(random_num) === -1) arr.push(random_num);
             }
             // document.getElementById("myArr").innerHTML = arr;
-            if (arr.includes(1) | arr.includes(42)) {
+            if (arr.includes(1)) {
                 c[count + 1].style.backgroundColor = "green";
                 count++;
             } else {
@@ -152,28 +151,22 @@ function startTimer(duration, display) {
             if (arr.includes(count)) {
                 //if the participant doesn't react on a jump before the next jump
                 // keep the record in log as "No Reaction"
-
-
                 if (csvArr.length > 1 && csvArr[csvArr.length - 1][2] != dot_pos_x) {
                     csvArr.push([id, Date(), dot_pos_x, dot_pos_y, "NaN", "No Reaction"]);
                 }
-
                 c[count - 1].style.backgroundColor = "white";
                 if (count == 42) { c[1].style.backgroundColor = "green"; } else {
                     c[count + 1].style.backgroundColor = "green";
                 }
-
                 jumpedTime = Date.now();
                 dot_pos_x = c[count].getBoundingClientRect().x;
                 dot_pos_y = c[count].getBoundingClientRect().y;
-
                 document.getElementById("dotpos").textContent = dot_pos_x + " , " + dot_pos_y;
                 // document.getElementById("jumpT").textContent = jumpedTime;
                 count++;
             } else {
                 c[count - 1].style.backgroundColor = "white";
                 c[count].style.backgroundColor = "green";
-
             }
         }
         count++;
