@@ -160,5 +160,5 @@ function startTimer(duration, display) {
             c[count].style.backgroundColor = "green";
         }
         count++;
-    }, 1);
+    }, 1000);
 }
