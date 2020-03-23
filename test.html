@@ -12,39 +12,25 @@
         <p>You will see 42 white dots on your screen and a green dot will visit one dot to the next in clockwise direction each second. When you see the green dot performs a jump and omits one position. You have to press the SPACE KEY.
         </p>
         <p>Now, please enter your ID and click submit button to start.</p>
-        <div class='form-uname'>
-            <label id='nameLabel' for='nameField'>Your ID:
-            <input id='nameField' type='text' maxlength='25'></input>
+        <div class='form-id'>
+            <label id='idLabel' for='idField'>Your ID:
+            <input id='idField' type='text' maxlength='25'></input>
         </label>
             <div class='form-sub'>
-                <button id='subButton' type='button' onclick="getUserName()">Submit</button>
+                <button id='subButton' type='button' onclick="getUserId()">Submit</button>
             </div>
         </div>
     </div>
     <div id="test">
-        <p>Hi, <span id="participantID"></span>. Please press the "S" key to start.<br>Please fixate the cross in the center and press a SPACE KEY when you notice the green dot performs a jump. <br>The test closes in <span id="time">03:00</span> minutes!</p>
+        <p>Hi, <span id="participantID"></span>. Please press the "S" key to start.<br>Please fixate the cross in the center and press a SPACE KEY when you notice the green dot performs a jump. <br>The test closes in <span id="time">15:00</span> minutes!</p>
         <div class="row">
-            <div class="column" id="c1">
-                <div id="fixdiv"></div>
-                <div id="parentdiv"></div>
-            </div>
-            <div class="column" id="c2">
-                <div id="report">
-                    <h1><span id="testDone"></span></h1>
-                    <h2>You may download your report as CSV file <br> or/and send it directly to our institute.</h2>
-                    <button onclick="send_csv()" id="send_csv">Send CSV</button>
-                    <button onclick="download_csv()" id="download_csv">Download CSV</button>
-                </div>
-                <div id="dashboard">
-                    <!-- <h1 id="jumpingArr">"The jumping arr: <span id="myArr"></span></h1> -->
-                    <!-- <h1>Jumped Time: <span id="jumpT"></span></h1> -->
-                    <!-- <h1>childNodes: <span id="childNodes"></span></h1>
-                    <h1>Count: <span id="countnode"></span></h1> -->
-                    <h2 style="text-align: left">React Time: <span id="reactT"></span> second</h2>
-                    <h2 style="text-align: left">Correctness: <span id="correct"></span></h2>
-                    <h2 style="font-size:large; text-align:left">Dot position: <br> <span id="dotpos"></span> </h2>
-                </div>
-
+            <div id="fixdiv"></div>
+            <div id="parentdiv"></div>
+            <div id="report">
+                <h1><span id="testDone"></span></h1>
+                <h2>You may download your report as CSV file <br> or/and send it directly to our institute.</h2>
+                <button onclick="send_csv()" id="send_csv">Send CSV</button>
+                <button onclick="download_csv()" id="download_csv">Download CSV</button>
             </div>
         </div>
 

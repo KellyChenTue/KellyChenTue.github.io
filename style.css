@@ -4,10 +4,6 @@ body {
     padding-left: 20px;
     padding-right: 20px;
     left: 20px;
-    /* Suppose you want minimum width of 1000px */
-    /* width: auto !important;
-    /* Firefox will set width as auto */
-    /* width: 1000px; */
 }
 
 h1 {
@@ -29,12 +25,12 @@ p {
     display: block;
 }
 
-.form-uname {
+.form-id {
     font-size: 30px;
     text-align: center;
 }
 
-#nameField {
+#idField {
     height: 20px;
     background-color: rgb(203, 233, 228);
     padding: 10px;
@@ -46,7 +42,6 @@ p {
     width: 150px;
     height: 150px;
     margin: 250px auto;
-    front-size: 100px;
 }
 
 #parentdiv {
@@ -60,14 +55,12 @@ p {
     text-align: center;
 }
 
-#dashboard {
-    display: none;
-    padding: 100px;
-}
-
 #report {
     display: none;
     text-align: center;
+    top: 250px;
+    left: 0px;
+    position: relative;
 }
 
 #download_csv {
@@ -161,23 +154,3 @@ p span {
     top: 8px;
     width: 20px;
 }
-
-
-/* 
-.fixdiv {
-    background: red;
-    height: 100px;
-    position: relative;
-    width: 20px;
-    text-align: center;
-}
-
-.fixdiv:after {
-    background: red;
-    content: "";
-    height: 20px;
-    left: -40px;
-    position: absolute;
-    top: 40px;
-    width: 100px;
-} */
